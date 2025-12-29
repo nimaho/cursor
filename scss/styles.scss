@@ -1,56 +1,347 @@
-/* Bootstrap build + minimal custom styles (SCSS) */
+/* Bootstrap build + app color system (SCSS) */
 
-@use "sass:color";
-
-// Add 2 colors using Bootstrap's theme-colors map system
-$mofid: #0ea5e9;
-$slate: #f97316;
-
-// Generate mofid tints/shades 000..900 (000 is lightest, 900 is darkest)
-$mofid-scale: (
-  "mofid-000": color.mix(white, $mofid, 96%),
-  "mofid-100": color.mix(white, $mofid, 88%),
-  "mofid-200": color.mix(white, $mofid, 76%),
-  "mofid-300": color.mix(white, $mofid, 64%),
-  "mofid-400": color.mix(white, $mofid, 48%),
-  "mofid-500": $mofid,
-  "mofid-600": color.mix(black, $mofid, 12%),
-  "mofid-700": color.mix(black, $mofid, 24%),
-  "mofid-800": color.mix(black, $mofid, 36%),
-  "mofid-900": color.mix(black, $mofid, 48%)
+// App color-scheme map (light/dark)
+$color-scheme: (
+  "light": (
+    "gray-000": #ffffff,
+    "gray-050": #f7f7f9,
+    "gray-100": #eff0f4,
+    "gray-200": #e4e4e8,
+    "gray-300": #c6c8cf,
+    "gray-400": #a5a6b2,
+    "gray-500": #898b98,
+    "gray-600": #6c6e7b,
+    "gray-700": #474752,
+    "gray-800": #302f3a,
+    "gray-900": #22222b,
+    "gray-950": #17171e,
+    "gray-999": #0b0b0e,
+    "mofid-050": #e7fafc,
+    "mofid-100": #d6f1f7,
+    "mofid-200": #b1eaf5,
+    "mofid-300": #84d1e1,
+    "mofid-400": #57b8cd,
+    "mofid-500": #0096b7,
+    "mofid-600": #007191,
+    "mofid-700": #004c6a,
+    "mofid-800": #09435a,
+    "mofid-900": #133a4b,
+    "mofid-950": #1c313b,
+    "slate-050": #eef6fa,
+    "slate-100": #dfeff5,
+    "slate-200": #cde5f1,
+    "slate-300": #accadd,
+    "slate-400": #86a9c4,
+    "slate-500": #6a88a4,
+    "slate-600": #4f6883,
+    "slate-700": #445972,
+    "slate-800": #394a60,
+    "slate-900": #2e3a4f,
+    "slate-950": #232b3d,
+    "yellow-050": #fff9e2,
+    "yellow-100": #fef1ca,
+    "yellow-200": #fee9b2,
+    "yellow-300": #fcd98b,
+    "yellow-400": #fac96d,
+    "yellow-500": #f7af3e,
+    "yellow-600": #c88f35,
+    "yellow-700": #a3772e,
+    "yellow-800": #7b5d2d,
+    "yellow-900": #584420,
+    "yellow-950": #352c1c,
+    "green-050": #e7fded,
+    "green-100": #c5fad8,
+    "green-200": #a1f3c0,
+    "green-300": #72ebab,
+    "green-400": #4dd89c,
+    "green-500": #1bbf89,
+    "green-600": #1ba276,
+    "green-700": #207b5d,
+    "green-800": #215e4a,
+    "green-900": #214539,
+    "green-950": #1b2f29,
+    "red-050": #fef3ed,
+    "red-100": #fce0d3,
+    "red-200": #fbcdb9,
+    "red-300": #f4a893,
+    "red-400": #e98576,
+    "red-500": #db524b,
+    "red-600": #b44648,
+    "red-700": #933b42,
+    "red-800": #73303c,
+    "red-900": #552a30,
+    "red-950": #372524,
+    "purple-050": #f8f4ff,
+    "purple-100": #ece1fd,
+    "purple-200": #dfcefb,
+    "purple-300": #c9b3f4,
+    "purple-400": #b49bea,
+    "purple-500": #9173dc,
+    "purple-600": #7057b7,
+    "purple-700": #544098,
+    "purple-800": #42337d,
+    "purple-900": #372e5f,
+    "purple-950": #2c2841,
+    "blue-050": #ecf8ff,
+    "blue-100": #d7edfd,
+    "blue-200": #bfe2fd,
+    "blue-300": #9ecef9,
+    "blue-400": #84baf3,
+    "blue-500": #5197f1,
+    "blue-600": #3f74c2,
+    "blue-700": #2d5193,
+    "blue-800": #253e74,
+    "blue-900": #21305b,
+    "blue-950": #20293f,
+    "disable-050": #f7f7f9,
+    "disable-100": #e6e6e6,
+    "disable-200": #d6d6d6,
+    "disable-300": #c6c6c6,
+    "success-050": #e7fded,
+    "success-100": #c5fad8,
+    "success-200": #a1f3c0,
+    "success-300": #72ebab,
+    "success-400": #4dd89c,
+    "success-500": #1bbf89,
+    "success-600": #1ba276,
+    "success-700": #207b5d,
+    "success-800": #215e4a,
+    "success-900": #214539,
+    "success-950": #1b2f29,
+    "danger-050": #fef3ed,
+    "danger-100": #fce0d3,
+    "danger-200": #fbcdb9,
+    "danger-300": #f4a893,
+    "danger-400": #e98576,
+    "danger-500": #db524b,
+    "danger-600": #b44648,
+    "danger-700": #933b42,
+    "danger-800": #73303c,
+    "danger-900": #552a30,
+    "danger-950": #372524,
+    "primary-050": #eff8fe,
+    "primary-100": #dff2fe,
+    "primary-200": #bfe2fd,
+    "primary-300": #9ecef9,
+    "primary-400": #84baf3,
+    "primary-500": #5d9cec,
+    "primary-600": #4379ca,
+    "primary-700": #2e5aa9,
+    "primary-800": #1d3e88,
+    "primary-900": #112a71,
+    "warning-050": #fff9e2,
+    "warning-100": #fef1ca,
+    "warning-200": #fee9b2,
+    "warning-300": #fcd98b,
+    "warning-400": #fac96d,
+    "warning-500": #f7af3e,
+    "warning-600": #c88f35,
+    "warning-700": #a3772e,
+    "warning-800": #7b5d2d,
+    "warning-900": #584420,
+    "warning-950": #352c1c,
+    "violet-050": #f8f4ff,
+    "violet-100": #ece1fd,
+    "violet-200": #dfcefb,
+    "violet-300": #c9b3f4,
+    "violet-400": #b49bea,
+    "violet-500": #9173dc,
+    "violet-600": #7057b7,
+    "violet-700": #544098,
+    "violet-800": #42337d,
+    "violet-900": #372e5f,
+    "violet-950": #2c2841,
+    "global-050": #e7fafc,
+    "global-100": #d6f1f7,
+    "global-200": #b1eaf5,
+    "global-300": #84d1e1,
+    "global-400": #57b8cd,
+    "global-500": #0096b7,
+    "global-600": #007191,
+    "global-700": #004c6a,
+    "global-800": #09435a,
+    "global-900": #133a4b,
+    "global-950": #1c313b,
+    "stroke-050": #f9f9f9,
+    "stroke-100": #ededed,
+    "stroke-200": #cacacb
+  ),
+  "dark": (
+    "gray-000": #22222b,
+    "gray-050": #302f3a,
+    "gray-100": #17171e,
+    "gray-200": #0b0b0e,
+    "gray-300": #474752,
+    "gray-400": #6c6e7b,
+    "gray-500": #898b98,
+    "gray-600": #a5a6b2,
+    "gray-700": #c6c8cf,
+    "gray-800": #f7f7f9,
+    "gray-900": #ffffff,
+    "gray-950": #eff0f4,
+    "gray-999": #e4e4e8,
+    "mofid-050": #1c313b,
+    "mofid-100": #133a4b,
+    "mofid-200": #09435a,
+    "mofid-300": #004c6a,
+    "mofid-400": #b1eaf5,
+    "mofid-500": #84d1e1,
+    "mofid-600": #57b8cd,
+    "mofid-700": #0096b7,
+    "mofid-800": #007191,
+    "mofid-900": #d6f1f7,
+    "mofid-950": #e7fafc,
+    "slate-050": #232b3d,
+    "slate-100": #2e3a4f,
+    "slate-200": #394a60,
+    "slate-300": #445972,
+    "slate-400": #accadd,
+    "slate-500": #86a9c4,
+    "slate-600": #6a88a4,
+    "slate-700": #4f6883,
+    "slate-800": #cde5f1,
+    "slate-900": #dfeff5,
+    "slate-950": #eef6fa,
+    "yellow-050": #352c1c,
+    "yellow-100": #584420,
+    "yellow-200": #7b5d2d,
+    "yellow-300": #fcd98b,
+    "yellow-400": #fac96d,
+    "yellow-500": #f7af3e,
+    "yellow-600": #c88f35,
+    "yellow-700": #a3772e,
+    "yellow-800": #fee9b2,
+    "yellow-900": #fef1ca,
+    "yellow-950": #fff9e2,
+    "green-050": #1b2f29,
+    "green-100": #214539,
+    "green-200": #215e4a,
+    "green-300": #72ebab,
+    "green-400": #4dd89c,
+    "green-500": #1bbf89,
+    "green-600": #1ba276,
+    "green-700": #207b5d,
+    "green-800": #a1f3c0,
+    "green-900": #c5fad8,
+    "green-950": #e7fded,
+    "red-050": #372524,
+    "red-100": #552a30,
+    "red-200": #73303c,
+    "red-300": #f4a893,
+    "red-400": #e98576,
+    "red-500": #db524b,
+    "red-600": #b44648,
+    "red-700": #933b42,
+    "red-800": #fbcdb9,
+    "red-900": #fce0d3,
+    "red-950": #fef3ed,
+    "purple-050": #2c2841,
+    "purple-100": #372e5f,
+    "purple-200": #42337d,
+    "purple-300": #c9b3f4,
+    "purple-400": #b49bea,
+    "purple-500": #9173dc,
+    "purple-600": #7057b7,
+    "purple-700": #544098,
+    "purple-800": #dfcefb,
+    "purple-900": #ece1fd,
+    "purple-950": #f8f4ff,
+    "blue-050": #20293f,
+    "blue-100": #21305b,
+    "blue-200": #253e74,
+    "blue-300": #9ecef9,
+    "blue-400": #84baf3,
+    "blue-500": #5197f1,
+    "blue-600": #3f74c2,
+    "blue-700": #2d5193,
+    "blue-800": #bfe2fd,
+    "blue-900": #d7edfd,
+    "blue-950": #ecf8ff,
+    "disable-050": #303030,
+    "disable-100": #353535,
+    "disable-200": #505050,
+    "disable-300": #6a6a6a,
+    "success-050": #1b2f29,
+    "success-100": #214539,
+    "success-200": #215e4a,
+    "success-300": #72ebab,
+    "success-400": #4dd89c,
+    "success-500": #1bbf89,
+    "success-600": #1ba276,
+    "success-700": #207b5d,
+    "success-800": #a1f3c0,
+    "success-900": #c5fad8,
+    "success-950": #e7fded,
+    "danger-050": #372524,
+    "danger-100": #552a30,
+    "danger-200": #73303c,
+    "danger-300": #f4a893,
+    "danger-400": #e98576,
+    "danger-500": #db524b,
+    "danger-600": #b44648,
+    "danger-700": #933b42,
+    "danger-800": #fbcdb9,
+    "danger-900": #fce0d3,
+    "danger-950": #fef3ed,
+    "primary-050": #20293f,
+    "primary-100": #21305b,
+    "primary-200": #253e74,
+    "primary-300": #9ecef9,
+    "primary-400": #84baf3,
+    "primary-500": #5197f1,
+    "primary-600": #3f74c2,
+    "primary-700": #2d5193,
+    "primary-800": #bfe2fd,
+    "primary-900": #d7edfd,
+    "primary-950": #ecf8ff,
+    "warning-050": #fff9e2,
+    "warning-100": #fef1ca,
+    "warning-200": #fee9b2,
+    "warning-300": #fcd98b,
+    "warning-400": #fac96d,
+    "warning-500": #f7af3e,
+    "warning-600": #c88f35,
+    "warning-700": #a3772e,
+    "warning-800": #7b5d2d,
+    "warning-900": #584420,
+    "warning-950": #352c1c,
+    "violet-050": #2c2841,
+    "violet-100": #372e5f,
+    "violet-200": #42337d,
+    "violet-300": #c9b3f4,
+    "violet-400": #b49bea,
+    "violet-500": #9173dc,
+    "violet-600": #7057b7,
+    "violet-700": #544098,
+    "violet-800": #dfcefb,
+    "violet-900": #ece1fd,
+    "violet-950": #f8f4ff,
+    "global-100": #133a4b,
+    "global-200": #09435a,
+    "global-300": #004c6a,
+    "global-400": #57b8cd,
+    "global-500": #84d1e1,
+    "global-600": #57b8cd,
+    "global-700": #0096b7,
+    "global-800": #007191,
+    "global-900": #d6f1f7,
+    "global-950": #e7fafc,
+    "stroke-050": #282930,
+    "stroke-100": #33333a,
+    "stroke-200": #414146
+  )
 );
 
-// Gray palettes 000..900 (light and dark)
-// gray-light: light -> dark
-$gray-light-scale: (
-  "gray-light-000": #f8fafc,
-  "gray-light-100": #f1f5f9,
-  "gray-light-200": #e2e8f0,
-  "gray-light-300": #cbd5e1,
-  "gray-light-400": #94a3b8,
-  "gray-light-500": #64748b,
-  "gray-light-600": #475569,
-  "gray-light-700": #334155,
-  "gray-light-800": #1e293b,
-  "gray-light-900": #0f172a
-);
+@function scheme($mode, $key) {
+  @return map-get(map-get($color-scheme, $mode), $key);
+}
 
-// gray-dark: dark -> light (useful for dark UIs)
-$gray-dark-scale: (
-  "gray-dark-000": #020617,
-  "gray-dark-100": #0b1220,
-  "gray-dark-200": #0f172a,
-  "gray-dark-300": #111c2e,
-  "gray-dark-400": #1e293b,
-  "gray-dark-500": #334155,
-  "gray-dark-600": #475569,
-  "gray-dark-700": #94a3b8,
-  "gray-dark-800": #e2e8f0,
-  "gray-dark-900": #f8fafc
-);
+$mofid-base: scheme("light", "mofid-500");
+$slate-base: scheme("light", "slate-500");
 
-// Common gray steps list
-$gray-steps: ("000", "100", "200", "300", "400", "500", "600", "700", "800", "900");
+$gray-keys: ("000", "050", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950", "999");
+$mofid-keys: ("050", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950");
+$slate-keys: ("050", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950");
 
 // ---- Bootstrap import stack (so we can override maps) ----
 @import "../node_modules/bootstrap/scss/functions";
@@ -61,17 +352,10 @@ $gray-steps: ("000", "100", "200", "300", "400", "500", "600", "700", "800", "90
 $theme-colors: map-merge(
   $theme-colors,
   (
-    "mofid": $mofid,
-    "slate": $slate
+    "mofid": scheme("light", "mofid-500"),
+    "slate": scheme("light", "slate-500")
   )
 );
-
-// Add the mofid scale variants into Bootstrap theme map
-$theme-colors: map-merge($theme-colors, $mofid-scale);
-
-// Add gray palettes into Bootstrap theme map
-$theme-colors: map-merge($theme-colors, $gray-light-scale);
-$theme-colors: map-merge($theme-colors, $gray-dark-scale);
 
 @import "../node_modules/bootstrap/scss/maps";
 @import "../node_modules/bootstrap/scss/mixins";
@@ -112,24 +396,16 @@ $theme-colors: map-merge($theme-colors, $gray-dark-scale);
 @import "../node_modules/bootstrap/scss/helpers";
 @import "../node_modules/bootstrap/scss/utilities/api";
 
-// expose as CSS vars for convenience (optional)
 :root {
-  --theme-mofid: #{$mofid};
-  --theme-slate: #{$slate};
-  --theme-mofid-000: #{map-get($mofid-scale, "mofid-000")};
-  --theme-mofid-100: #{map-get($mofid-scale, "mofid-100")};
-  --theme-mofid-200: #{map-get($mofid-scale, "mofid-200")};
-  --theme-mofid-300: #{map-get($mofid-scale, "mofid-300")};
-  --theme-mofid-400: #{map-get($mofid-scale, "mofid-400")};
-  --theme-mofid-500: #{map-get($mofid-scale, "mofid-500")};
-  --theme-mofid-600: #{map-get($mofid-scale, "mofid-600")};
-  --theme-mofid-700: #{map-get($mofid-scale, "mofid-700")};
-  --theme-mofid-800: #{map-get($mofid-scale, "mofid-800")};
-  --theme-mofid-900: #{map-get($mofid-scale, "mofid-900")};
-
-  // Theme-aware gray (light palette by default)
-  @each $s in $gray-steps {
-    --bs-gray-#{$s}-rgb: #{to-rgb(map-get($gray-light-scale, "gray-light-#{$s}"))};
+  // Theme tokens (light)
+  @each $k in $gray-keys {
+    --bs-gray-#{$k}-rgb: #{to-rgb(scheme("light", "gray-#{$k}"))};
+  }
+  @each $k in $mofid-keys {
+    --bs-mofid-#{$k}-rgb: #{to-rgb(scheme("light", "mofid-#{$k}"))};
+  }
+  @each $k in $slate-keys {
+    --bs-slate-#{$k}-rgb: #{to-rgb(scheme("light", "slate-#{$k}"))};
   }
 }
 
@@ -151,7 +427,7 @@ body {
 .brand-mark {
   width: 2.25rem;
   height: 2.25rem;
-  background: linear-gradient(135deg, rgba($mofid, 0.22), rgba($slate, 0.22));
+  background: linear-gradient(135deg, rgba($mofid-base, 0.22), rgba($slate-base, 0.22));
   color: rgb(13, 110, 253);
 }
 
@@ -197,10 +473,15 @@ body {
   .mini-stat {
     background: rgba(255, 255, 255, 0.06);
   }
-
-  // Override gray palette in dark theme
-  @each $s in $gray-steps {
-    --bs-gray-#{$s}-rgb: #{to-rgb(map-get($gray-dark-scale, "gray-dark-#{$s}"))};
+  // Theme tokens (dark)
+  @each $k in $gray-keys {
+    --bs-gray-#{$k}-rgb: #{to-rgb(scheme("dark", "gray-#{$k}"))};
+  }
+  @each $k in $mofid-keys {
+    --bs-mofid-#{$k}-rgb: #{to-rgb(scheme("dark", "mofid-#{$k}"))};
+  }
+  @each $k in $slate-keys {
+    --bs-slate-#{$k}-rgb: #{to-rgb(scheme("dark", "slate-#{$k}"))};
   }
 }
 
@@ -211,7 +492,7 @@ body {
 // - class="border border-gray-300 hover:border-gray-500"
 $tw-colon: "\\:"; // produces \: in CSS selector
 
-@each $s in $gray-steps {
+@each $s in $gray-keys {
   // base gray utilities
   .bg-gray-#{$s} {
     --bs-bg-opacity: 1;
@@ -241,32 +522,59 @@ $tw-colon: "\\:"; // produces \: in CSS selector
   }
 }
 
-// Tailwind-like hover variants for mofid scale (Bootstrap already provides bg-mofid-*, text-mofid-*, border-mofid-*)
-$mofid-keys: (
-  "mofid-000",
-  "mofid-100",
-  "mofid-200",
-  "mofid-300",
-  "mofid-400",
-  "mofid-500",
-  "mofid-600",
-  "mofid-700",
-  "mofid-800",
-  "mofid-900"
-);
-
-@each $k in $mofid-keys {
-  .hover#{$tw-colon}bg-#{$k}:hover {
+// Tailwind-like utilities + hover variants for mofid
+@each $s in $mofid-keys {
+  .bg-mofid-#{$s} {
     --bs-bg-opacity: 1;
-    background-color: rgba(var(--bs-#{$k}-rgb), var(--bs-bg-opacity)) !important;
+    background-color: rgba(var(--bs-mofid-#{$s}-rgb), var(--bs-bg-opacity)) !important;
   }
-  .hover#{$tw-colon}text-#{$k}:hover {
+  .text-mofid-#{$s} {
     --bs-text-opacity: 1;
-    color: rgba(var(--bs-#{$k}-rgb), var(--bs-text-opacity)) !important;
+    color: rgba(var(--bs-mofid-#{$s}-rgb), var(--bs-text-opacity)) !important;
   }
-  .hover#{$tw-colon}border-#{$k}:hover {
+  .border-mofid-#{$s} {
     --bs-border-opacity: 1;
-    border-color: rgba(var(--bs-#{$k}-rgb), var(--bs-border-opacity)) !important;
+    border-color: rgba(var(--bs-mofid-#{$s}-rgb), var(--bs-border-opacity)) !important;
+  }
+  .hover#{$tw-colon}bg-mofid-#{$s}:hover {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-mofid-#{$s}-rgb), var(--bs-bg-opacity)) !important;
+  }
+  .hover#{$tw-colon}text-mofid-#{$s}:hover {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-mofid-#{$s}-rgb), var(--bs-text-opacity)) !important;
+  }
+  .hover#{$tw-colon}border-mofid-#{$s}:hover {
+    --bs-border-opacity: 1;
+    border-color: rgba(var(--bs-mofid-#{$s}-rgb), var(--bs-border-opacity)) !important;
+  }
+}
+
+// Tailwind-like utilities + hover variants for slate
+@each $s in $slate-keys {
+  .bg-slate-#{$s} {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-slate-#{$s}-rgb), var(--bs-bg-opacity)) !important;
+  }
+  .text-slate-#{$s} {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-slate-#{$s}-rgb), var(--bs-text-opacity)) !important;
+  }
+  .border-slate-#{$s} {
+    --bs-border-opacity: 1;
+    border-color: rgba(var(--bs-slate-#{$s}-rgb), var(--bs-border-opacity)) !important;
+  }
+  .hover#{$tw-colon}bg-slate-#{$s}:hover {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-slate-#{$s}-rgb), var(--bs-bg-opacity)) !important;
+  }
+  .hover#{$tw-colon}text-slate-#{$s}:hover {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-slate-#{$s}-rgb), var(--bs-text-opacity)) !important;
+  }
+  .hover#{$tw-colon}border-slate-#{$s}:hover {
+    --bs-border-opacity: 1;
+    border-color: rgba(var(--bs-slate-#{$s}-rgb), var(--bs-border-opacity)) !important;
   }
 }
 
