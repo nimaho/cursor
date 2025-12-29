@@ -176,16 +176,18 @@ $mofid-steps: (
   "mofid-900"
 );
 
+$tw-colon: "\\:"; // produces \: in CSS selector
+
 @each $c in $mofid-steps {
-  .hover\\:bg-#{$c}:hover {
+  .hover#{$tw-colon}bg-#{$c}:hover {
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-#{$c}-rgb), var(--bs-bg-opacity)) !important;
   }
-  .hover\\:text-#{$c}:hover {
+  .hover#{$tw-colon}text-#{$c}:hover {
     --bs-text-opacity: 1;
     color: rgba(var(--bs-#{$c}-rgb), var(--bs-text-opacity)) !important;
   }
-  .hover\\:border-#{$c}:hover {
+  .hover#{$tw-colon}border-#{$c}:hover {
     --bs-border-opacity: 1;
     border-color: rgba(var(--bs-#{$c}-rgb), var(--bs-border-opacity)) !important;
   }

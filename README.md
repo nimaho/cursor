@@ -43,6 +43,23 @@ npm run build
 - `bg-mofid`, `bg-slate`
 - `border-mofid`, `border-slate`
 
+### پالت مفید 000 تا 900
+
+برای `mofid` پالت `mofid-000` تا `mofid-900` هم اضافه شده:
+
+- `bg-mofid-000` … `bg-mofid-900`
+- `text-mofid-000` … `text-mofid-900`
+- `border-mofid-000` … `border-mofid-900`
+- `btn-mofid-000` … `btn-mofid-900`
+
+### Hover شبیه Tailwind (فقط برای مفید)
+
+می‌توانید برای رنگ‌های `mofid-000..900` هاور را با کلاس‌های `hover:` تعیین کنید:
+
+- مثال: `class="bg-mofid-200 hover:bg-mofid-400"`
+- مثال: `class="text-mofid-700 hover:text-mofid-900"`
+- مثال: `class="border border-mofid-300 hover:border-mofid-500"`
+
 ## ساختار
 
 - `index.html`: صفحه اصلی
