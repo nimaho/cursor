@@ -1,8 +1,24 @@
 /* Bootstrap build + minimal custom styles (SCSS) */
 
+@use "sass:color";
+
 // Add 2 colors using Bootstrap's theme-colors map system
 $mofid: #0ea5e9;
 $slate: #f97316;
+
+// Generate mofid tints/shades 000..900 (000 is lightest, 900 is darkest)
+$mofid-scale: (
+  "mofid-000": color.mix(white, $mofid, 96%),
+  "mofid-100": color.mix(white, $mofid, 88%),
+  "mofid-200": color.mix(white, $mofid, 76%),
+  "mofid-300": color.mix(white, $mofid, 64%),
+  "mofid-400": color.mix(white, $mofid, 48%),
+  "mofid-500": $mofid,
+  "mofid-600": color.mix(black, $mofid, 12%),
+  "mofid-700": color.mix(black, $mofid, 24%),
+  "mofid-800": color.mix(black, $mofid, 36%),
+  "mofid-900": color.mix(black, $mofid, 48%)
+);
 
 // ---- Bootstrap import stack (so we can override maps) ----
 @import "../node_modules/bootstrap/scss/functions";
@@ -17,6 +33,9 @@ $theme-colors: map-merge(
     "slate": $slate
   )
 );
+
+// Add the mofid scale variants into Bootstrap theme map
+$theme-colors: map-merge($theme-colors, $mofid-scale);
 
 @import "../node_modules/bootstrap/scss/maps";
 @import "../node_modules/bootstrap/scss/mixins";
@@ -61,6 +80,16 @@ $theme-colors: map-merge(
 :root {
   --theme-mofid: #{$mofid};
   --theme-slate: #{$slate};
+  --theme-mofid-000: #{map-get($mofid-scale, "mofid-000")};
+  --theme-mofid-100: #{map-get($mofid-scale, "mofid-100")};
+  --theme-mofid-200: #{map-get($mofid-scale, "mofid-200")};
+  --theme-mofid-300: #{map-get($mofid-scale, "mofid-300")};
+  --theme-mofid-400: #{map-get($mofid-scale, "mofid-400")};
+  --theme-mofid-500: #{map-get($mofid-scale, "mofid-500")};
+  --theme-mofid-600: #{map-get($mofid-scale, "mofid-600")};
+  --theme-mofid-700: #{map-get($mofid-scale, "mofid-700")};
+  --theme-mofid-800: #{map-get($mofid-scale, "mofid-800")};
+  --theme-mofid-900: #{map-get($mofid-scale, "mofid-900")};
 }
 
 :root {
