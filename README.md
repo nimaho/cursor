@@ -38,10 +38,10 @@ npm run build
 
 دو رنگ جدید به `theme-colors` اضافه شده‌اند و می‌توانید از کلاس‌های بوت‌استرپ استفاده کنید:
 
-- `btn-accent-1`, `btn-accent-2`
-- `text-accent-1`, `text-accent-2`
-- `bg-accent-1`, `bg-accent-2`
-- `border-accent-1`, `border-accent-2`
+- `btn-mofid`, `btn-slate`
+- `text-mofid`, `text-slate`
+- `bg-mofid`, `bg-slate`
+- `border-mofid`, `border-slate`
 
 ## ساختار
 

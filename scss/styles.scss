@@ -1,8 +1,8 @@
 /* Bootstrap build + minimal custom styles (SCSS) */
 
 // Add 2 colors using Bootstrap's theme-colors map system
-$accent-1: #0ea5e9; // sky
-$accent-2: #f97316; // orange
+$mofid: #0ea5e9;
+$slate: #f97316;
 
 // ---- Bootstrap import stack (so we can override maps) ----
 @import "../node_modules/bootstrap/scss/functions";
@@ -13,8 +13,8 @@ $accent-2: #f97316; // orange
 $theme-colors: map-merge(
   $theme-colors,
   (
-    "accent-1": $accent-1,
-    "accent-2": $accent-2
+    "mofid": $mofid,
+    "slate": $slate
   )
 );
 
@@ -59,8 +59,8 @@ $theme-colors: map-merge(
 
 // expose as CSS vars for convenience (optional)
 :root {
-  --theme-accent-1: #{$accent-1};
-  --theme-accent-2: #{$accent-2};
+  --theme-mofid: #{$mofid};
+  --theme-slate: #{$slate};
 }
 
 :root {
@@ -81,7 +81,7 @@ body {
 .brand-mark {
   width: 2.25rem;
   height: 2.25rem;
-  background: linear-gradient(135deg, rgba($accent-1, 0.22), rgba($accent-2, 0.22));
+  background: linear-gradient(135deg, rgba($mofid, 0.22), rgba($slate, 0.22));
   color: rgb(13, 110, 253);
 }
 
