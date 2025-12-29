@@ -34,31 +34,34 @@ npm run build
 
 این دستور SCSS را کامپایل می‌کند و خروجی RTL را در `assets/css/styles.css` می‌نویسد.
 
-## رنگ‌های تم (Bootstrap map)
+## سیستم رنگ (Light/Dark) + کلاس‌های شبیه Tailwind
 
-دو رنگ جدید به `theme-colors` اضافه شده‌اند و می‌توانید از کلاس‌های بوت‌استرپ استفاده کنید:
+رنگ‌ها از داخل map به اسم **`$color-scheme`** (دو حالت `light` و `dark`) تولید می‌شوند و با تغییر
+`data-bs-theme="dark"` (دکمه «حالت تیره») به‌صورت خودکار سوییچ می‌کنند.
+
+### رنگ‌های اصلی (Bootstrap theme-colors)
 
 - `btn-mofid`, `btn-slate`
 - `text-mofid`, `text-slate`
 - `bg-mofid`, `bg-slate`
 - `border-mofid`, `border-slate`
 
-### پالت مفید 000 تا 900
+### پالت‌ها (Utilities)
 
-برای `mofid` پالت `mofid-000` تا `mofid-900` هم اضافه شده:
+- **Gray**: `gray-000, gray-050, ..., gray-950, gray-999`
+  - `bg-gray-300`, `text-gray-700`, `border-gray-050`, ...
+- **Mofid**: `mofid-050 ... mofid-950`
+  - `bg-mofid-500`, `text-mofid-700`, `border-mofid-200`, ...
+- **Slate**: `slate-050 ... slate-950`
+  - `bg-slate-200`, `text-slate-700`, `border-slate-400`, ...
 
-- `bg-mofid-000` … `bg-mofid-900`
-- `text-mofid-000` … `text-mofid-900`
-- `border-mofid-000` … `border-mofid-900`
-- `btn-mofid-000` … `btn-mofid-900`
+### Hover دقیقاً مثل Tailwind
 
-### Hover شبیه Tailwind (فقط برای مفید)
+برای `gray / mofid / slate` می‌توانید هاور را اینطور تعیین کنید:
 
-می‌توانید برای رنگ‌های `mofid-000..900` هاور را با کلاس‌های `hover:` تعیین کنید:
-
-- مثال: `class="bg-mofid-200 hover:bg-mofid-400"`
-- مثال: `class="text-mofid-700 hover:text-mofid-900"`
-- مثال: `class="border border-mofid-300 hover:border-mofid-500"`
+- `class="bg-gray-200 hover:bg-gray-300"`
+- `class="bg-mofid-500 hover:bg-mofid-700"`
+- `class="bg-slate-200 hover:bg-slate-300"`
 
 ## ساختار
 
