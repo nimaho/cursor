@@ -1,6 +1,6 @@
-# پروژه ساده Bootstrap 5 (RTL) با Vite
+# پروژه ساده Bootstrap 5 (RTL) با npm (بدون Vite)
 
-این پروژه یک صفحه‌ی ساده و آماده با **Bootstrap 5** (نصب‌شده با npm) است و برای صفحات فارسی **RTL** تنظیم شده.
+این پروژه یک صفحه‌ی ساده با **Bootstrap 5** (از npm) و **SCSS** است و بدون باندلر اجرا می‌شود.
 
 ## پیش‌نیاز
 
@@ -12,7 +12,7 @@
 npm install
 ```
 
-## اجرا (واچ)
+## اجرا (واچ + ریلود)
 
 ```bash
 npm start
@@ -28,19 +28,12 @@ npm start
 npm run build
 ```
 
-خروجی در پوشه‌ی `dist/` ساخته می‌شود.
-
-## بیلد با واچ (هر بار ذخیره، خروجی آپدیت می‌شود)
-
-```bash
-npm run build:watch
-```
-
-با این دستور بعد از هر ذخیره، `dist/` دوباره ساخته می‌شود و `dist/index.html` هم آپدیت می‌گردد.
+این دستور فقط **SCSS را به CSS** تبدیل می‌کند و خروجی را در `assets/css/styles.css` می‌نویسد.
 
 ## ساختار
 
 - `index.html`: صفحه اصلی
-- `src/main.js`: ورودی JS (ایمپورت Bootstrap/CSS و کدهای صفحه)
-- `src/styles.scss`: استایل‌های سفارشی (SCSS)
+- `assets/js/main.js`: کدهای صفحه (حالت تیره/فرم)
+- `scss/styles.scss`: ورودی SCSS
+- `assets/css/styles.css`: خروجی CSS (تولیدشده)
 

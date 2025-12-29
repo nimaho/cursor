@@ -6,7 +6,11 @@
     <meta name="description" content="صفحه ساده با بوت‌استرپ ۵" />
     <title>پروژه ساده Bootstrap 5</title>
 
-    <!-- Styles & Bootstrap are bundled via Vite (see /src/main.js) -->
+    <!-- Bootstrap (RTL) from npm -->
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+    <!-- Compiled SCSS output -->
+    <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body class="bg-body">
     <a class="skip-link visually-hidden-focusable" href="#main">رفتن به محتوای اصلی</a>
@@ -110,7 +114,7 @@
                   <div class="col-12">
                     <div class="alert alert-info mb-0" role="status">
                       <i class="bi bi-info-circle me-1"></i>
-                      این پروژه با Vite بیلد می‌شود و تغییرات را به‌صورت واچ نمایش می‌دهد.
+                      این پروژه با npm (بدون باندلر) اجرا می‌شود و SCSS به CSS کامپایل می‌گردد.
                     </div>
                   </div>
                 </div>
@@ -180,13 +184,13 @@
             <div class="col-12 col-lg-6">
               <h2 class="h3 fw-bold mb-3">درباره این صفحه</h2>
               <p class="text-body-secondary mb-3">
-                این قالب برای شروع پروژه‌های کوچک مناسب است: یک فایل HTML و یک فولدر <code>src</code> برای
-                کدهای CSS/JS.
+                این قالب برای شروع پروژه‌های کوچک مناسب است: یک فایل HTML، یک فایل JS و یک فایل SCSS که به CSS
+                کامپایل می‌شود.
               </p>
               <ul class="text-body-secondary mb-0">
                 <li>Bootstrap 5.3.x از طریق npm</li>
                 <li>نسخه RTL برای صفحات فارسی</li>
-                <li>Dev Server با واچ + خروجی build</li>
+                <li>SCSS واچ می‌شود و CSS خروجی در HTML لود می‌گردد</li>
               </ul>
             </div>
             <div class="col-12 col-lg-6">
@@ -196,7 +200,7 @@
                   <span class="badge text-bg-success">OK</span>
                 </div>
                 <div class="small text-body-secondary">
-                  برای اجرای dev کافیست <code>npm start</code> را اجرا کنید.
+                  برای اجرا کافیست <code>npm start</code> را اجرا کنید.
                 </div>
               </div>
             </div>
@@ -285,6 +289,7 @@
       </div>
     </footer>
 
-    <script type="module" src="/src/main.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/main.js"></script>
   </body>
 </html>
