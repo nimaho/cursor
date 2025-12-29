@@ -49,6 +49,9 @@ $gray-dark-scale: (
   "gray-dark-900": #f8fafc
 );
 
+// Common gray steps list
+$gray-steps: ("000", "100", "200", "300", "400", "500", "600", "700", "800", "900");
+
 // ---- Bootstrap import stack (so we can override maps) ----
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
@@ -123,6 +126,11 @@ $theme-colors: map-merge($theme-colors, $gray-dark-scale);
   --theme-mofid-700: #{map-get($mofid-scale, "mofid-700")};
   --theme-mofid-800: #{map-get($mofid-scale, "mofid-800")};
   --theme-mofid-900: #{map-get($mofid-scale, "mofid-900")};
+
+  // Theme-aware gray (light palette by default)
+  @each $s in $gray-steps {
+    --bs-gray-#{$s}-rgb: #{to-rgb(map-get($gray-light-scale, "gray-light-#{$s}"))};
+  }
 }
 
 :root {
@@ -189,62 +197,76 @@ body {
   .mini-stat {
     background: rgba(255, 255, 255, 0.06);
   }
-}
 
-// Hover utilities (simple class names, no ":"), for mofid + gray palettes
-// Examples:
-// - class="bg-mofid-200 hover-bg-mofid-300"
-// - class="text-mofid-700 hover-text-mofid-900"
-// - class="border border-mofid-300 hover-border-mofid-500"
-@mixin hover-color-utilities($keys) {
-  @each $k in $keys {
-    .hover-bg-#{$k}:hover {
-      --bs-bg-opacity: 1;
-      background-color: rgba(var(--bs-#{$k}-rgb), var(--bs-bg-opacity)) !important;
-    }
-    .hover-text-#{$k}:hover {
-      --bs-text-opacity: 1;
-      color: rgba(var(--bs-#{$k}-rgb), var(--bs-text-opacity)) !important;
-    }
-    .hover-border-#{$k}:hover {
-      --bs-border-opacity: 1;
-      border-color: rgba(var(--bs-#{$k}-rgb), var(--bs-border-opacity)) !important;
-    }
+  // Override gray palette in dark theme
+  @each $s in $gray-steps {
+    --bs-gray-#{$s}-rgb: #{to-rgb(map-get($gray-dark-scale, "gray-dark-#{$s}"))};
   }
 }
 
-@include hover-color-utilities(
-  (
-    "mofid-000",
-    "mofid-100",
-    "mofid-200",
-    "mofid-300",
-    "mofid-400",
-    "mofid-500",
-    "mofid-600",
-    "mofid-700",
-    "mofid-800",
-    "mofid-900",
-    "gray-light-000",
-    "gray-light-100",
-    "gray-light-200",
-    "gray-light-300",
-    "gray-light-400",
-    "gray-light-500",
-    "gray-light-600",
-    "gray-light-700",
-    "gray-light-800",
-    "gray-light-900",
-    "gray-dark-000",
-    "gray-dark-100",
-    "gray-dark-200",
-    "gray-dark-300",
-    "gray-dark-400",
-    "gray-dark-500",
-    "gray-dark-600",
-    "gray-dark-700",
-    "gray-dark-800",
-    "gray-dark-900"
-  )
+// Tailwind-like gray utilities (theme-aware) + hover variants
+// Examples:
+// - class="bg-gray-200 hover:bg-gray-300 text-dark"
+// - class="text-gray-700 hover:text-gray-900"
+// - class="border border-gray-300 hover:border-gray-500"
+$tw-colon: "\\:"; // produces \: in CSS selector
+
+@each $s in $gray-steps {
+  // base gray utilities
+  .bg-gray-#{$s} {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-gray-#{$s}-rgb), var(--bs-bg-opacity)) !important;
+  }
+  .text-gray-#{$s} {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-gray-#{$s}-rgb), var(--bs-text-opacity)) !important;
+  }
+  .border-gray-#{$s} {
+    --bs-border-opacity: 1;
+    border-color: rgba(var(--bs-gray-#{$s}-rgb), var(--bs-border-opacity)) !important;
+  }
+
+  // hover variants (Tailwind-like)
+  .hover#{$tw-colon}bg-gray-#{$s}:hover {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-gray-#{$s}-rgb), var(--bs-bg-opacity)) !important;
+  }
+  .hover#{$tw-colon}text-gray-#{$s}:hover {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-gray-#{$s}-rgb), var(--bs-text-opacity)) !important;
+  }
+  .hover#{$tw-colon}border-gray-#{$s}:hover {
+    --bs-border-opacity: 1;
+    border-color: rgba(var(--bs-gray-#{$s}-rgb), var(--bs-border-opacity)) !important;
+  }
+}
+
+// Tailwind-like hover variants for mofid scale (Bootstrap already provides bg-mofid-*, text-mofid-*, border-mofid-*)
+$mofid-keys: (
+  "mofid-000",
+  "mofid-100",
+  "mofid-200",
+  "mofid-300",
+  "mofid-400",
+  "mofid-500",
+  "mofid-600",
+  "mofid-700",
+  "mofid-800",
+  "mofid-900"
 );
+
+@each $k in $mofid-keys {
+  .hover#{$tw-colon}bg-#{$k}:hover {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-#{$k}-rgb), var(--bs-bg-opacity)) !important;
+  }
+  .hover#{$tw-colon}text-#{$k}:hover {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-#{$k}-rgb), var(--bs-text-opacity)) !important;
+  }
+  .hover#{$tw-colon}border-#{$k}:hover {
+    --bs-border-opacity: 1;
+    border-color: rgba(var(--bs-#{$k}-rgb), var(--bs-border-opacity)) !important;
+  }
+}
 
