@@ -6,7 +6,7 @@
     "build": "npm run build:css",
     "build:css": "sass scss/styles.scss assets/css/styles.css --style=compressed",
     "watch:css": "sass scss/styles.scss assets/css/styles.css --watch",
-    "start": "concurrently -k \"npm run watch:css\" \"live-server --port=5173 --no-browser\""
+    "start": "concurrently -k \"npm run watch:css\" \"live-server --port=5173 --open=/\""
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
