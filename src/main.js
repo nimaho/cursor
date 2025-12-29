@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "./styles.css";
+import "./styles.scss";
 
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
