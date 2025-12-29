@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "npm run build:css",
-    "build:css": "sass scss/styles.scss assets/css/styles.css --style=compressed",
-    "watch:css": "sass scss/styles.scss assets/css/styles.css --watch",
+    "build:css": "node scripts/build-css.js",
+    "watch:css": "node scripts/watch-css.js",
     "start": "concurrently -k \"npm run watch:css\" \"live-server --port=5173 --open=/\""
   },
   "dependencies": {
@@ -13,8 +13,10 @@
     "bootstrap-icons": "^1.11.3"
   },
   "devDependencies": {
+    "chokidar": "^4.0.3",
     "concurrently": "^9.2.1",
     "live-server": "^1.2.2",
+    "rtlcss": "^4.3.0",
     "sass": "^1.81.0"
   }
 }

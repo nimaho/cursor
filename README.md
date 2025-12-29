@@ -2,6 +2,8 @@
 
 این پروژه یک صفحه‌ی ساده با **Bootstrap 5** (از npm) و **SCSS** است و بدون باندلر اجرا می‌شود.
 
+Bootstrap از روی SCSS خودش کامپایل می‌شود تا بتوانیم با **`$theme-colors` map** رنگ‌های جدید به تم اضافه کنیم.
+
 ## پیش‌نیاز
 
 - Node.js (نسخه‌های جدید LTS پیشنهاد می‌شود)
@@ -30,7 +32,16 @@ npm start
 npm run build
 ```
 
-این دستور فقط **SCSS را به CSS** تبدیل می‌کند و خروجی را در `assets/css/styles.css` می‌نویسد.
+این دستور SCSS را کامپایل می‌کند و خروجی RTL را در `assets/css/styles.css` می‌نویسد.
+
+## رنگ‌های تم (Bootstrap map)
+
+دو رنگ جدید به `theme-colors` اضافه شده‌اند و می‌توانید از کلاس‌های بوت‌استرپ استفاده کنید:
+
+- `btn-accent-1`, `btn-accent-2`
+- `text-accent-1`, `text-accent-2`
+- `bg-accent-1`, `bg-accent-2`
+- `border-accent-1`, `border-accent-2`
 
 ## ساختار
 
