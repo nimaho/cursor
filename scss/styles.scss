@@ -158,3 +158,36 @@ body {
   }
 }
 
+// Tailwind-like hover utilities for mofid scale
+// Usage examples:
+// - class="bg-mofid-200 hover:bg-mofid-300"
+// - class="text-mofid-700 hover:text-mofid-900"
+// - class="border border-mofid-300 hover:border-mofid-500"
+$mofid-steps: (
+  "mofid-000",
+  "mofid-100",
+  "mofid-200",
+  "mofid-300",
+  "mofid-400",
+  "mofid-500",
+  "mofid-600",
+  "mofid-700",
+  "mofid-800",
+  "mofid-900"
+);
+
+@each $c in $mofid-steps {
+  .hover\\:bg-#{$c}:hover {
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-#{$c}-rgb), var(--bs-bg-opacity)) !important;
+  }
+  .hover\\:text-#{$c}:hover {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-#{$c}-rgb), var(--bs-text-opacity)) !important;
+  }
+  .hover\\:border-#{$c}:hover {
+    --bs-border-opacity: 1;
+    border-color: rgba(var(--bs-#{$c}-rgb), var(--bs-border-opacity)) !important;
+  }
+}
+
