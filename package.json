@@ -1,0 +1,23 @@
+{
+  "name": "bootstrap-5-simple-page",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run build:css",
+    "build:css": "node scripts/build-css.js",
+    "watch:css": "node scripts/watch-css.js",
+    "start": "concurrently -k \"npm run watch:css\" \"live-server --port=5173 --open=/\""
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3"
+  },
+  "devDependencies": {
+    "chokidar": "^4.0.3",
+    "concurrently": "^9.2.1",
+    "live-server": "^1.2.2",
+    "rtlcss": "^4.3.0",
+    "sass": "^1.81.0"
+  }
+}
+

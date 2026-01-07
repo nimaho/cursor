@@ -1,1 +1,341 @@
-hello world
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="صفحه ساده با بوت‌استرپ ۵" />
+    <title>پروژه ساده Bootstrap 5</title>
+
+    <!-- Bootstrap is compiled from SCSS into styles.css (with theme map overrides) -->
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+    <!-- Compiled SCSS output -->
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body class="bg-body">
+    <a class="skip-link visually-hidden-focusable" href="#main">رفتن به محتوای اصلی</a>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+          <span class="brand-mark d-inline-flex align-items-center justify-content-center rounded-3">
+            <i class="bi bi-bootstrap"></i>
+          </span>
+          <span>Bootstrap 5</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+          aria-controls="nav"
+          aria-expanded="false"
+          aria-label="باز/بسته کردن منو"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#features">ویژگی‌ها</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">درباره</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">تماس</a></li>
+          </ul>
+
+          <div class="d-flex gap-2 mt-3 mt-lg-0">
+            <button id="themeToggle" class="btn btn-outline-secondary btn-sm" type="button">
+              <i class="bi bi-moon-stars"></i>
+              حالت تیره
+            </button>
+            <a class="btn btn-primary btn-sm" href="#contact">
+              شروع
+              <i class="bi bi-arrow-left-short"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="py-5 hero">
+      <div class="container py-4">
+        <div class="row align-items-center g-4">
+          <div class="col-12 col-lg-6">
+            <span class="badge text-bg-primary-subtle border border-primary-subtle mb-3">
+              پروژه آماده‌ی توسعه
+            </span>
+            <h1 class="display-5 fw-bold lh-sm mb-3">یک صفحه‌ی ساده با بوت‌استرپ ۵</h1>
+            <p class="lead text-body-secondary mb-4">
+              این یک اسکلت سبک و تمیز برای شروع سریع است: ریسپانسیو، راست‌چین (RTL)، و با چند بخش کاربردی.
+            </p>
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+              <a class="btn btn-primary btn-lg" href="#features">
+                مشاهده ویژگی‌ها
+                <i class="bi bi-arrow-left-short"></i>
+              </a>
+              <a class="btn btn-outline-secondary btn-lg" href="#about">بیشتر بدانید</a>
+              <span class="badge rounded-pill bg-mofid">mofid</span>
+              <span class="badge rounded-pill bg-slate">slate</span>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mt-3 small">
+              <span class="badge rounded-pill bg-mofid-050 text-dark border border-dark-subtle">050</span>
+              <span class="badge rounded-pill bg-mofid-100 text-dark border border-dark-subtle">100</span>
+              <span class="badge rounded-pill bg-mofid-200 text-dark">200</span>
+              <span class="badge rounded-pill bg-mofid-300 text-dark">300</span>
+              <span class="badge rounded-pill bg-mofid-400 text-dark">400</span>
+              <span class="badge rounded-pill bg-mofid-500">500</span>
+              <span class="badge rounded-pill bg-mofid-600">600</span>
+              <span class="badge rounded-pill bg-mofid-700">700</span>
+              <span class="badge rounded-pill bg-mofid-800">800</span>
+              <span class="badge rounded-pill bg-mofid-900">900</span>
+              <span class="badge rounded-pill bg-mofid-950">950</span>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mt-3 small">
+              <span class="badge rounded-pill bg-gray-000 text-dark border border-dark-subtle">gray-000</span>
+              <span class="badge rounded-pill bg-gray-050 text-dark border border-dark-subtle">gray-050</span>
+              <span class="badge rounded-pill bg-gray-200 text-dark">gray-200</span>
+              <span class="badge rounded-pill bg-gray-500 text-white">gray-500</span>
+              <span class="badge rounded-pill bg-gray-900 text-white">gray-900</span>
+              <span class="badge rounded-pill bg-gray-950 text-white">gray-950</span>
+              <span class="badge rounded-pill bg-gray-999 text-white">gray-999</span>
+            </div>
+            <div class="mt-3">
+              <a
+                class="btn btn-mofid btn-sm hover:bg-mofid-700"
+                href="#features"
+                title="Tailwind-like: hover:bg-mofid-700"
+              >
+                هاور مفید (mofid-700)
+              </a>
+              <a
+                class="btn btn-sm bg-gray-200 hover:bg-gray-300 text-dark ms-2"
+                href="#about"
+                title="Tailwind-like: hover:bg-gray-300"
+              >
+                hover:bg-gray-300
+              </a>
+              <a
+                class="btn btn-sm bg-slate-200 hover:bg-slate-300 text-dark ms-2"
+                href="#about"
+                title="Tailwind-like: hover:bg-slate-300"
+              >
+                hover:bg-slate-300
+              </a>
+            </div>
+            <div class="d-flex flex-wrap gap-3 mt-4 text-body-secondary small">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-lightning-charge"></i>
+                سریع و سبک
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-phone"></i>
+                کاملاً ریسپانسیو
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-universal-access"></i>
+                قابل دسترس
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6">
+            <div class="card shadow-sm border-0">
+              <div class="card-body p-4 p-lg-5">
+                <h2 class="h5 fw-bold mb-3">نمونه کارت</h2>
+                <p class="text-body-secondary mb-4">
+                  می‌توانید این بخش را با محتوای واقعی (محصول/خدمت/معرفی) جایگزین کنید.
+                </p>
+                <div class="row g-3">
+                  <div class="col-6">
+                    <div class="mini-stat p-3 rounded-3 border">
+                      <div class="fw-bold">+24%</div>
+                      <div class="text-body-secondary small">رشد</div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="mini-stat p-3 rounded-3 border">
+                      <div class="fw-bold">120</div>
+                      <div class="text-body-secondary small">کاربر</div>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="alert alert-info mb-0" role="status">
+                      <i class="bi bi-info-circle me-1"></i>
+                      این پروژه با npm (بدون باندلر) اجرا می‌شود و SCSS به CSS کامپایل می‌گردد.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="features" class="py-5">
+        <div class="container">
+          <div class="d-flex align-items-end justify-content-between gap-3 mb-4">
+            <div>
+              <h2 class="h3 fw-bold mb-1">ویژگی‌ها</h2>
+              <p class="text-body-secondary mb-0">چند بخش آماده برای شروع سریع.</p>
+            </div>
+            <a class="link-secondary text-decoration-none" href="#contact">
+              تماس
+              <i class="bi bi-arrow-left-short"></i>
+            </a>
+          </div>
+
+          <div class="row g-3 g-lg-4">
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="feature card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <div class="icon rounded-3 mb-3"><i class="bi bi-grid-1x2"></i></div>
+                  <h3 class="h5 fw-bold">چیدمان تمیز</h3>
+                  <p class="text-body-secondary mb-0">
+                    از سیستم Grid بوت‌استرپ برای چیدمان دقیق در موبایل و دسکتاپ استفاده شده.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="feature card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <div class="icon rounded-3 mb-3"><i class="bi bi-palette2"></i></div>
+                  <h3 class="h5 fw-bold">کاستوم‌سازی آسان</h3>
+                  <p class="text-body-secondary mb-0">
+                    یک فایل CSS کوچک برای استایل‌های سفارشی اضافه شده تا تمیز بماند.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="feature card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <div class="icon rounded-3 mb-3"><i class="bi bi-moon-stars"></i></div>
+                  <h3 class="h5 fw-bold">حالت تیره</h3>
+                  <p class="text-body-secondary mb-0">
+                    یک دکمه‌ی ساده برای تغییر <span dir="ltr">light/dark</span> با استفاده از
+                    <code>data-bs-theme</code>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="py-5 bg-body-tertiary border-top border-bottom">
+        <div class="container">
+          <div class="row align-items-center g-4">
+            <div class="col-12 col-lg-6">
+              <h2 class="h3 fw-bold mb-3">درباره این صفحه</h2>
+              <p class="text-body-secondary mb-3">
+                این قالب برای شروع پروژه‌های کوچک مناسب است: یک فایل HTML، یک فایل JS و یک فایل SCSS که به CSS
+                کامپایل می‌شود.
+              </p>
+              <ul class="text-body-secondary mb-0">
+                <li>Bootstrap 5.3.x از طریق npm</li>
+                <li>نسخه RTL برای صفحات فارسی</li>
+                <li>SCSS واچ می‌شود و CSS خروجی در HTML لود می‌گردد</li>
+              </ul>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="p-4 rounded-4 bg-body shadow-sm border">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <div class="fw-bold">راه‌اندازی سریع</div>
+                  <span class="badge text-bg-success">OK</span>
+                </div>
+                <div class="small text-body-secondary">
+                  برای اجرا کافیست <code>npm start</code> را اجرا کنید.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-5">
+        <div class="container">
+          <div class="row g-4 align-items-stretch">
+            <div class="col-12 col-lg-5">
+              <h2 class="h3 fw-bold mb-2">تماس</h2>
+              <p class="text-body-secondary mb-4">
+                این فرم فقط نمایشی است (ارسال واقعی ندارد) و برای نمونه UI آماده شده.
+              </p>
+              <div class="d-flex flex-column gap-2 text-body-secondary">
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-envelope"></i>
+                  <span dir="ltr">hello@example.com</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-geo-alt"></i>
+                  تهران، ایران
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-7">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4 p-lg-5">
+                  <form id="contactForm" novalidate>
+                    <div class="row g-3">
+                      <div class="col-12 col-md-6">
+                        <label class="form-label" for="name">نام</label>
+                        <input class="form-control" id="name" name="name" placeholder="مثلاً علی" required />
+                      </div>
+                      <div class="col-12 col-md-6">
+                        <label class="form-label" for="email">ایمیل</label>
+                        <input
+                          class="form-control"
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="name@example.com"
+                          required
+                        />
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label" for="message">پیام</label>
+                        <textarea
+                          class="form-control"
+                          id="message"
+                          name="message"
+                          rows="4"
+                          placeholder="پیام شما..."
+                          required
+                        ></textarea>
+                      </div>
+                      <div class="col-12 d-flex flex-wrap gap-2 align-items-center">
+                        <button class="btn btn-primary" type="submit">
+                          ارسال (نمایشی)
+                          <i class="bi bi-arrow-left-short"></i>
+                        </button>
+                        <div id="formStatus" class="small text-body-secondary" role="status" aria-live="polite"></div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-4 border-top bg-body">
+      <div class="container d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2">
+        <div class="text-body-secondary small">
+          © <span id="year"></span> پروژه ساده Bootstrap 5
+        </div>
+        <div class="d-flex gap-3">
+          <a class="link-secondary text-decoration-none" href="#features">ویژگی‌ها</a>
+          <a class="link-secondary text-decoration-none" href="#about">درباره</a>
+          <a class="link-secondary text-decoration-none" href="#contact">تماس</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
